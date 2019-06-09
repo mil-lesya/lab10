@@ -9,15 +9,15 @@ import java.util.Date;
 
 public class UserDao {
 
-    private final ConnectionCreator  connectionCreator = new ConnectionCreator();
+    private final ConnectionCreator connectionCreator = new ConnectionCreator();
 
     public UserDao() throws ConnectionException {
     }
 
 
-    public boolean isExists(String login) throws SQLException, ClassNotFoundException{
+    public boolean isExists(String login) throws SQLException, ClassNotFoundException {
         Connection connection = connectionCreator.createConnection();
-        PreparedStatement statement = connection.prepareStatement("SELECT login FROM users WHERE login='" + login + "'" );
+        PreparedStatement statement = connection.prepareStatement("SELECT login FROM users WHERE login='" + login + "'");
         ResultSet resultSet = statement.executeQuery();
         if (resultSet.next()) {
             return true;
@@ -34,12 +34,12 @@ public class UserDao {
 
     public boolean checkFor(String login, String password) throws SQLException, ClassNotFoundException {
         Connection connection = connectionCreator.createConnection();
-        PreparedStatement statement = connection.prepareStatement("SELECT password FROM users WHERE login='" + login +"'");
+        PreparedStatement statement = connection.prepareStatement("SELECT password FROM users WHERE login='" + login + "'");
         ResultSet resultSet = statement.executeQuery();
         if (resultSet.next()) {
             String retrievedPassword = resultSet.getString(1);
             if (retrievedPassword.equals(password)) {
-                connection.prepareStatement("UPDATE users SET login_number = login_number + 1 WHERE login='" + login + "'");
+                connection.prepareStatement("SET SQL_SAFE_UPDATES = 0;UPDATE users SET login_number = login_number + 1 WHERE login='" + login + "'");
                 return true;
             }
         }

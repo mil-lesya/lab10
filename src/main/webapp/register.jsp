@@ -1,8 +1,14 @@
-<%-- Created by IntelliJ IDEA. --%>
+<%--
+  Created by IntelliJ IDEA.
+  User: Леся
+  Date: 09.06.2019
+  Time: 10:25
+  To change this template use File | Settings | File Templates.
+--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>$Title$</title>
+    <title>Register</title>
     <style>
         body {
             min-height: calc(100vh - 50px);
@@ -44,27 +50,18 @@
             margin: 3%;
         }
     </style>
-    <script>
-        function retrieveTime() {
-            var request = new XMLHttpRequest();
-            request.onreadystatechange = function () {
-                if (request.readyState === 4) {
-                    var result = request.response;
-                    alert(result);
-                }
-            };
-            request.open("GET", "getTime");
-            request.send();
-        }
-    </script>
 </head>
 <body>
-<button onclick="retrieveTime()">Current date</button>
+<fieldset>
+    <legend>Registration</legend>
+    <form method="POST" action="register">
+        <input name="login" type="text" placeholder="login"/>
+        <input name="password" type="password" placeholder="password"/>
+        <input type="submit" value="Register"/>
+    </form>
+</fieldset>
 <form method="POST" action="GoToLogin">
     <input type="submit" value="Sign up"/>
-</form>
-<form method="POST" action="GoToRegister">
-    <input type="submit" value="Registration"/>
 </form>
 </body>
 </html>

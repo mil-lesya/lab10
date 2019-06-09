@@ -1,3 +1,5 @@
+package servlets;
+
 import connection.ConnectionException;
 import connection.UserDao;
 

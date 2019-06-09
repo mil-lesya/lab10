@@ -1,10 +1,17 @@
-<%-- Created by IntelliJ IDEA. --%>
+<%--
+  Created by IntelliJ IDEA.
+  User: Леся
+  Date: 09.06.2019
+  Time: 10:26
+  To change this template use File | Settings | File Templates.
+--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>$Title$</title>
+    <title>Authorize</title>
     <style>
-        body {
+        body
+        {
             min-height: calc(100vh - 50px);
             overflow: hidden;
             max-width: 250px;
@@ -14,7 +21,6 @@
             text-align: center;
             font-size: 20px;
         }
-
         button {
             background-color: rgba(178, 149, 166, 0.96);
             align-self: center;
@@ -29,7 +35,6 @@
             margin: 3%;
             padding: 10px;
         }
-
         fieldset {
             text-align: center;
             *zoom: 2;
@@ -39,32 +44,23 @@
             margin: 3%;
             padding: 10px;
         }
-
-        input {
+        input{
             margin: 3%;
         }
     </style>
-    <script>
-        function retrieveTime() {
-            var request = new XMLHttpRequest();
-            request.onreadystatechange = function () {
-                if (request.readyState === 4) {
-                    var result = request.response;
-                    alert(result);
-                }
-            };
-            request.open("GET", "getTime");
-            request.send();
-        }
-    </script>
+
 </head>
 <body>
-<button onclick="retrieveTime()">Current date</button>
-<form method="POST" action="GoToLogin">
-    <input type="submit" value="Sign up"/>
-</form>
-<form method="POST" action="GoToRegister">
-    <input type="submit" value="Registration"/>
-</form>
+<fieldset>
+    <legend>Authorize</legend>
+    <form method="POST" action="login">
+        <input name="login" type="text" placeholder="login"/>
+        <input name="password" type="password" placeholder="password"/>
+        <input type="submit" value="Sign up"/>
+    </form>
+</fieldset>
+    <form method="POST" action="GoToRegister">
+        <input type="submit" value="Registration"/>
+    </form>
 </body>
 </html>
